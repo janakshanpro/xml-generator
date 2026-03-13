@@ -1,0 +1,121 @@
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  transition: background 1.5s ease;
+  overflow: hidden;
+}
+
+.default {
+  background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
+}
+
+.sunny {
+  background: linear-gradient(to bottom, #4facfe 0%, #00f2fe 100%);
+}
+
+.cloudy {
+  background: linear-gradient(to bottom, #8e9eab 0%, #eef2f3 100%);
+}
+
+.partlyCloudy {
+  background: linear-gradient(to bottom, #6dd5ed 0%, #2193b0 100%);
+}
+
+.rainy {
+  background: linear-gradient(to bottom, #2c3e50 0%, #3498db 100%);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.4) 150%);
+  pointer-events: none;
+}
+
+/* Sun Animation */
+.sun {
+  position: absolute;
+  top: 15%;
+  right: 20%;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, #fcd34d 0%, rgba(253, 230, 138, 0) 70%);
+  border-radius: 50%;
+  box-shadow: 0 0 80px 40px rgba(251, 191, 36, 0.4);
+  animation: pulse 4s infinite alternate;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.2); opacity: 1; }
+}
+
+/* Rain Animation */
+.rainContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.raindrop {
+  position: absolute;
+  top: -50px;
+  width: 2px;
+  height: 30px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.8));
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to { transform: translateY(110vh); }
+}
+
+/* Clouds Animation */
+.cloudsContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.cloud {
+  position: absolute;
+  width: 200px;
+  height: 60px;
+  background: #fff;
+  border-radius: 200px;
+  left: -250px;
+  animation: float linear infinite;
+  filter: blur(8px);
+  opacity: 0.7;
+}
+
+.cloud::before, .cloud::after {
+  content: '';
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.cloud::before {
+  width: 100px;
+  height: 100px;
+  top: -50px;
+  left: 20px;
+}
+
+.cloud::after {
+  width: 120px;
+  height: 120px;
+  top: -70px;
+  right: 20px;
+}
+
+@keyframes float {
+  to { transform: translateX(calc(100vw + 500px)); }
+}
